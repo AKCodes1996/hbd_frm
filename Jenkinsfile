@@ -1,11 +1,15 @@
-pipeline {
-    agent any
+post {
+    always {
+        junit testResults: 'reports/junit.xml',
+              allowEmptyResults: true
 
-    stages {
-        stage('Verify Jenkins') {
-            steps {
-                echo 'Jenkins pipeline started successfully'
-            }
-        }
+        publishHTML(target: [
+            reportName: 'Pytest HTML Report',
+            reportDir: 'reports',
+            reportFiles: 'report.html',
+            keepAll: true,
+            alwaysLinkToLastBuild: true,
+            allowMissing: true
+        ])
     }
 }
