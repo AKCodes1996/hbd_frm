@@ -15,8 +15,8 @@ def pytest_addoption(parser):
         "--browser",
         action="store",
         default=None,
-        choices=["chrome", "firefox", "edge"],
-        help="Select browser: chrome, firefox or edge"
+        choices=["chrome", "edge"],
+        help="Select browser: chrome or edge"
     )
     
     
